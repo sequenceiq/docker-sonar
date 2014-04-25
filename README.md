@@ -10,19 +10,22 @@ The SonarQube platform is made of 3 components:
 
 ### Description
 
-On this repo you'll find 2 images that provide the first 2 components: 
+On this repo you'll find 2 images that provide the first 2 components:
 
 	* Database (sonar-mysql)
 	* WebServer (sonar-server).
 
 ### Setup
 
+1. Until the trusted build on index.docker.io is ready, you need to build the images:
+
+	`cd sonar-mysql && docker build -t sequenceiq/sonar-mysql .`
+	`cd sonar-server && docker build -t sequenceiq/sonar-server .`
+
 1. First you need to run the database image, but you need to give it a name so it can be later linked with the sonar-server:
 
-	`docker run -i -t -d -p 3306:3306 -name smysql tpires/sonar:mysql`
+	`docker run -d -p 3306:3306 -name sonar_mysql sequenceiq/sonar-mysql`
 
 2. Now you need to run the server and link it with the database. That link will be named "db".
 
-	`docker run -i -t -d -p 9000:9000 -link smysql:db tpires/sonar:server`
-
-You can now access to sonar-server by opening your browser to http://localhost:9000 .
+	`docker run -d -p 9000:9000 -name sonar_server --link sonar_mysql:db sequenceiq/sonar-server`
