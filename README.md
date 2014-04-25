@@ -20,6 +20,7 @@ On this repo you'll find 2 images that provide the first 2 components:
 1. Until the trusted build on index.docker.io is ready, you need to build the images:
 
 	`cd sonar-mysql && docker build -t sequenceiq/sonar-mysql .`
+	
 	`cd sonar-server && docker build -t sequenceiq/sonar-server .`
 
 1. First you need to run the database image, but you need to give it a name so it can be later linked with the sonar-server:
