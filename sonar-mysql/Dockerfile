@@ -1,7 +1,6 @@
 from dockerfile/java
 maintainer SequenceIQ
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y
 
 ADD create_database.sql /tmp/create_database.sql
