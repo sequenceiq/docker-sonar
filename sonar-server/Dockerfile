@@ -14,3 +14,7 @@ RUN sed -i 's|sonar.jdbc.url=jdbc:h2|#sonar.jdbc.url=jdbc:h2|g' /opt/sonar/conf/
 RUN sed -i 's|#sonar.jdbc.url=jdbc:mysql://localhost|sonar.jdbc.url=jdbc:mysql://${env:DB_PORT_3306_TCP_ADDR}|g' /opt/sonar/conf/sonar.properties
 
 CMD ["/opt/sonar/bin/linux-x86-64/sonar.sh", "console", "/bin/bash"]
+
+RUN apt-get install -y maven 
+RUN cd ~ && wget https://github.com/octo-technology/sonar-objective-c/archive/master.zip && unzip master.zip && cd sonar-objective-c-master && mvn compile install
+RUN cp ~/sonar-objective-c-master/target/sonar-objective-c-plugin-0.3.2-SNAPSHOT.jar /opt/sonar/extensions/plugins/ 
