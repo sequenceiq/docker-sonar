@@ -15,6 +15,8 @@ On this repo you'll find 2 images that provide the first 2 components:
 	* Database (sonar-mysql)
 	* WebServer (sonar-server).
 
+This fork contains a docker file which will install the objective C plugin from octo into the sonar instance.
+
 ### Setup
 
 1. Until the trusted build on index.docker.io is ready, you need to build the images:
@@ -30,3 +32,5 @@ On this repo you'll find 2 images that provide the first 2 components:
 2. Now you need to run the server and link it with the database. That link will be named "db".
 
 	`docker run -d -p 9000:9000 -name sonar_server --link sonar_mysql:db sequenceiq/sonar-server`
+	
+3. Go to http://docker_host:9000/setup to upgrade the database
