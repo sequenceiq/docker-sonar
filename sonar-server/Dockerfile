@@ -1,4 +1,4 @@
-from dockerfile/java
+from java:7
 maintainer Sequenceiq
 
 # RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
