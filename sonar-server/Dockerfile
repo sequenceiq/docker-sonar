@@ -1,4 +1,4 @@
-from sequenceiq/java:java7_51
+from sequenceiq/java:7_51
 maintainer SequenceIQ
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
